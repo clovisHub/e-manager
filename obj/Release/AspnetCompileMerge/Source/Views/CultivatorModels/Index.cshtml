@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BeesApp.Models.CultivatorModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EstimatedBeesNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weighted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateWeighted)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstimatedBeesNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weighted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateWeighted)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CultivatorModelId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CultivatorModelId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CultivatorModelId })
+        </td>
+    </tr>
+}
+
+</table>

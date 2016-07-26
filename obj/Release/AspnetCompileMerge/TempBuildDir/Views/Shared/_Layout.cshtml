@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LouradoBees/e-Manager</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+</head>
+<body>
+       
+        <div class="navbar navbar-inverse navbar-top" style="background-color:">
+            <div class="container img-rounded" style="@*background-image:url(/Images/abeille1.jpe);*@ background-repeat:no-repeat; background-size:cover">
+                <img  alt="flyingHoneyBee" src="~/Images/bee-animated-gif-36.gif" width="250" height="200" />
+                <div style="float:right; color:white; font-size:30px"> We are still building this website. It is not done yet</div>
+            </div>
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img class="img-rounded" src="~/Images/logo.gif" @*style="max-height:50px"*@ />
+                    @Html.ActionLink("Lourado Bees", "Index", "Home", null, new { @class = "navbar-brand", @style = "color: orange; font-family: Gabriela" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+
+                        @if (Request.IsAuthenticated && User.IsInRole("SuperAdmin"))
+                        {
+                            <li>@Html.ActionLink("Welcome", "Index", "Home")</li>
+                            <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                            <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                            <li>@Html.ActionLink("Orders and Drivers", "Index", "DriverModels")</li>
+                            <li>@Html.ActionLink("Cashiers", "Index", "CashierModels")</li>
+                            <li>@Html.ActionLink("List of Orders", "Index", "OnlineOrderModels")</li>
+                            <li>@Html.ActionLink("Manager Confirmation","GetManagerCode","DriverModels")</li>
+                        }
+                        else if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Welcome", "Index", "Home")</li>
+                            <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                            <li>@Html.ActionLink("Orders and Drivers", "Index", "DriverModels")</li>
+                            <li>@Html.ActionLink("Cashiers", "Index", "CashierModels")</li>
+                            <li>@Html.ActionLink("List of Orders", "Index", "OnlineOrderModels")</li>
+                        }
+                        else if (Request.IsAuthenticated && User.IsInRole("Leader"))
+                        {
+                            <li>@Html.ActionLink("Welcome", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Orders and Drivers", "Index", "DriverModels")</li>
+                            <li>@Html.ActionLink("Cashiers", "Index", "CashierModels")</li>
+                            <li>@Html.ActionLink("List of Orders", "Index", "OnlineOrderModels")</li>
+
+                        }
+                        else if (Request.IsAuthenticated && User.IsInRole("Driver"))
+                        {
+                            <li>@Html.ActionLink("Welcome", "Index", "Home")</li>
+                            <li>@Html.ActionLink("My Orders", "OrdersDriver", "DriverModels")</li>
+                            <li>@Html.ActionLink("New Assignment", "ToDeliver", "DriverModels")</li>
+                        }
+                        else if (Request.IsAuthenticated && User.IsInRole("Cashier"))
+                        {
+                            <li>@Html.ActionLink("Welcome", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Sell", "Create", "CashierModels")</li>
+
+                        }
+                        else if (Request.IsAuthenticated && User.IsInRole("Beekeeper"))
+                        {
+                            <li>@Html.ActionLink("Welcome", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Report", "Index", "CultivatorModels")</li>
+                            <li>@Html.ActionLink("Enter Values", "Create", "CultivatorModels")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Order Online", "Create", "OnlineOrderModels")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+
+        </div>
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xm-12 ">
+        <hr />
+        <footer>
+
+            <div class="navbar-header col-lg-12 col-md-12 col-sm-12" style="background-color:white; margin:2px">
+                <div style="float: left; padding:5" class="col-lg-4 col-md-4 col-sm-12 col-xm-12">
+                    <dt style="font-family:Gabriola; font-size:medium">What we do and who we are</dt>
+                    <p style="font-family:Verdana; font-size:x-small" class="col-sm-12 col-xm-12">
+                        Lourado bees is an e-commerce companie <br />specialized on bee cuture and honey sales. <br />
+                        It sells fresh organic honey and deliver <br /> our product in some specific areas.<br />
+                        For more details click @Html.ActionLink("Here", "Index", "Home") or click on <span>Home</span>
+                    </p>
+
+                </div>
+                <div style="float: left;  padding:5" class="col-lg-4 col-md-4 col-sm-12 col-xm-12">
+                    
+                    @if (!(Request.IsAuthenticated))
+                    {
+                        <span style="font-family:Gabriola; font-size:medium">Ways to purchase</span>
+                        <p style="font-family:Verdana; font-size:x-small" class="col-xm-12">
+                            To Click below to purchase with: <br /> <a><img src="~/Images/paypal.png" with="50" height="50" /></a>
+                        </p>
+
+                    }
+                    else
+                    {
+                        <span>You are logged in</span>   
+                    }
+                    
+                </div>
+                <div style="padding:5" class="col-lg-4 col-md-4 col-sm-12 col-xm-12">
+                    <h4 style="font-family:Gabriola; font-size:medium" class="col-sm-12 col-xm-12">Contact Us</h4>
+                    <span style="display:inline" class="col-lg-12 col-md-12 col-sm-12 col-xm-12">
+                        <img class="col-sm-3 col-xm-4" src="~/Images/email.jpg" height="50" width="70" data-toggle="tooltip" data-placement="top" title="louradobees@gmail.com" />                  
+                        <img class="col-sm-3 col-xm-4" src="~/Images/telephone1.jpg" height="50" width="70" data-toggle="tooltip" data-placement="top" title="265-383-3837" />
+                        <img class="col-sm-3 col-xm-4" src="~/Images/house.png" height="60" width="80" data-toggle="tooltip" data-placement="top" title="2873 Bees St, Lourado city, SG 79377" />
+                    </span>
+
+                </div>
+
+            </div>
+            <div class="row" style=" text-align:center">
+                <span>&copy; @DateTime.Now.Year - Lourado Bees</span> <br /><br />
+            </div>
+        </footer>
+    </div>
+        <script>
+            $(document).ready(function () {
+
+                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+</body>
+</html>

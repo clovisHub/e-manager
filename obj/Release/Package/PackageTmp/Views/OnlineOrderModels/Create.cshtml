@@ -1,0 +1,147 @@
+﻿@model BeesApp.Models.OnlineOrderModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="col-md-3">
+   <span style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"></span> <img src="~/Images/paypal.png"/>
+   <span>click the image above to make a payment<span class="glyphicons glyphicons-hand"></span></span> 
+</div>
+
+<div class="col-md-6 col-lg-6">
+
+    <h4>Payment and terms</h4> <br />
+
+    There is not a better way to insure a costumer to get a refund if he is not controlling and being aware about how he will get refunded when
+    the service is not provided as expected. To insure costumers they will absolutely get what
+     they paid for and get refunded if not, our payment 
+    options
+    is Paypal.
+    <br/>
+
+    
+    <p>
+        Paypal is one of the wolrd wide tools used to transfer money electronically. It is safe to transfer and to get refund 
+        if the service is not provided. Paypal holds
+        the money for 30 days and then send it to the receiver account.
+         <span>for more details go to <a>PayPal.com</a></span>. 
+        If it happened any issue with the transaction, 
+        the costumer will have much time to reclaim refund
+        and to get his money back. We can guaranty it will not
+         happen because for many years, Lourado bees handle it very well in the satisfactory of its clients.
+        We have never failed in delivering before the schedule or on time our regulated fresh organic honey to our clients.
+
+    </p>
+    @*<h4>Wersten Union payment option</h4>
+    <p>
+        With Western Union, the process is different but also secure on the behalf of the client. Once you want to purchase some pack of Lourado bees organic honey
+        using Western Union option, first send us an email at LouradoBees@gmail.com to explicitely your full name, address, number of product you would purchase and
+        you will recieved all the instructions and order confirmation through your email. Your confirmation number  including the details of transaction received from us
+        and the wersten union MTnC code and Western Union reciept will be you safety guaranty of claim refund ifLourado Bees failed to deliver the product on time.
+
+        <span style="color: red">
+            Remember You have only 48 hours to transfer to money through Lourado Bees account provided
+            in the email sent to you by LouradoBees@gmail.com. If You failed to transfer during this interval of time, you order will be cancelled and Lourado bees will be not responsible if you made
+            any transfer passed 48 hours. To better served you, give Lourado bees means on time for your own satisfaction.
+        </span>
+
+
+    </p>*@
+
+
+    So, Lourado Bees does not take direct payment itself. A third party specialzed on money transaction does.
+     When a costumer purchase our organic honey, he or she will recieved an confirmation number through his or her
+    e-mail. This confirmation e-mail received by the costumer will be used along with the costumer signature 
+    to acknowledge recieving the merchandise.
+
+</div>
+
+<div class="col-md-3">
+
+    @*<span><img src="~/Images/Western-Union-icon.png"/></span>*@
+
+    <h4>Order trial</h4>
+
+    @using (Html.BeginForm("ValidateCommand","PaypalCont"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.ClientName, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ClientName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ClientName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                    @Html.LabelFor(model => model.ClientEmail, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ClientEmail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ClientEmail, "", new { @class = "text-danger" })
+                    </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuantityPurchased, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.QuantityPurchased, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.QuantityPurchased, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.TotalPrice, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.TotalPrice, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TotalPrice, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Send" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+       
+</div>
+<div><span><img  alt="beeHandSahke" src="~/Images/bee-travolta.gif"  width="90" height="180"/></span></div>
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

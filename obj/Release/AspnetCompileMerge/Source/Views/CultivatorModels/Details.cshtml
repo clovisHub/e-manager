@@ -1,0 +1,42 @@
+﻿@model BeesApp.Models.CultivatorModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CultivatorModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EstimatedBeesNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstimatedBeesNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weighted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weighted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateWeighted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateWeighted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CultivatorModelId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

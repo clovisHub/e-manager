@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="beesboss" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\clova\\Documents\\Visual\ Studio\ 2013\\Projects\\BeesApp\\BeesApp\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\clova\\Documents\\Visual\ Studio\ 2013\\Projects\\BeesApp\\BeesApp\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=tcp:dbwum48882.database.windows.net,1433;Initial Catalog=beesboss_db;User Id=Foxixo82@@dbwum48882;Password=Mymercedesbenz82@" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\clova\\Documents\\Visual\ Studio\ 2013\\Projects\\BeesApp\\BeesApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

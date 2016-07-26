@@ -1,0 +1,174 @@
+﻿@model BeesApp.Models.Shipping
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "ToDeliver";
+
+    // string result = (from s in _listwhere s == searchselect s).Single();
+
+}
+
+<h2>ToDeliver</h2>
+
+<table class="table">
+    <tr>
+        <th>Driver Name</th>
+
+        <th>Date Assigned</th>
+
+        <th>Address</th>
+
+        <th>Customer Name</th>
+
+        <th>Telephone</th>
+
+        <th>Quantity Purchased</th>
+
+    </tr>
+    @{
+
+        bool Homework = false;
+
+        string id = "";
+
+        bool sent = false;
+
+
+    }
+
+    <tr>
+        @foreach (var driv in Model.TempReport)
+        {
+            if (User.Identity.GetUserName().Equals(driv.DriversName) && User.Identity.GetUserId().Equals(driv.DriversId))
+            {
+                id = driv.OrdersId;
+
+                Homework = true;
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => driv.DriversName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => driv.DateAssigned)
+                </td>
+
+                if (driv.Approved == true)
+                {
+                    sent = true;
+                }
+
+                break;
+            }
+
+
+
+        }
+
+        @foreach (var order in Model.Orders)
+        {
+            if (("" + order.OnlineOrderModelId).Equals(id))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => order.Address)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => order.ClientName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => order.Telephone)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => order.QuantityPurchased)
+                </td>
+
+
+
+                break;
+            }
+
+
+        }
+
+    </tr>
+
+    @if (Homework == false)
+    {
+        <tbody> <tr> <td style="color:red"> Sorry! You do not have any assignment at this time. Maybe soon.</td></tr></tbody>
+    }
+
+</table>
+
+@if (Homework == true)
+{
+    <br />
+    <br />
+    if (sent == false)
+    {
+
+        using (Html.BeginForm())
+        {
+            <table>
+                <tr>
+                    <td><label>Manager Confirmation Order</label></td>
+                </tr>
+                <tr>
+                    <td> <span>please Enter the Approval code: </span></td>
+                    <td><input type="text" id="ManagerCode" name="managerApproval" value="" /></td>
+                    <td><input type="button" id="ClearInfo" value="Clear" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" id="approved" value="Validate" /></td>
+                </tr>
+
+
+            </table>
+
+        }
+
+
+
+    }
+    else
+    {
+
+        using (Html.BeginForm())
+        {
+            <label>Client Confirmation Order</label> <br />
+            <span>please Enter the confirmation code: </span>
+            <input type="text" id="ClientCode" name="clientApproval" value="" /><input type="button" id="Erase" value="Clear" /><br />
+            <input type="submit" id="confirmed" value="Submit" />
+        }
+
+
+    }
+
+
+
+
+}
+
+
+
+<script>
+
+    $document.ready(function () {
+
+        $("#ClearInfo").click(function () {
+
+            $("#ManagerCode").val("");
+        });
+
+        $("#Erase").click(function () {
+
+            $("#ClientCode").val("");
+        });
+
+    });
+
+</script>
+

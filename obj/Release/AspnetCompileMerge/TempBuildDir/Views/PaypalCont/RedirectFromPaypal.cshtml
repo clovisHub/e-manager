@@ -1,0 +1,62 @@
+﻿@using System.Configuration
+@model BeesApp.Models.GetDataFromPaypal
+@{
+    ViewBag.Title = "RedirectFromPaypal";
+}
+
+
+
+<div>
+    <h2>Payment Successfull!</h2>
+
+    @*<form action="@ConfigurationManager.AppSettings["test_url"]" method="post">
+
+        <input   name="cmd"  value="notify-synch"/>
+        <input   name="tx"  value="@ViewBag.tx" />
+        <input   name="at"  value="@ConfigurationManager.AppSettings[""]" />
+        <input type ="submit" name="Get data" class="btn btn-primary" />
+
+    </form>*@
+
+
+    <h3>Order info</h3> <span style="color:aquamarine">@ViewBag.tx</span>
+
+    <div class="row">
+
+        <label>Total price</label>
+        @Html.DisplayFor(model => model.GrossTotal)
+        <br />
+    </div>
+    <div class="row">
+
+        <label>Total price</label>
+        @Html.DisplayFor(model => model.PayerEmail)
+        <br />
+    </div>
+    <div class="row">
+
+        <label>Total price</label>
+        @Html.DisplayFor(model => model.PayerFirstName)
+        <br />
+    </div>
+    <div class="row">
+
+        <label>Total price</label>
+        @Html.DisplayFor(model => model.ReceiverEmail)
+        <br />
+    </div>
+    <div class="row">
+
+        <label>Total price</label>
+        @Html.DisplayFor(model => model.PayerLastName)
+        <br />
+    </div>
+    <div class="row">
+
+        <label>Transaction id</label>
+        @Html.DisplayFor(model => model.TransactionId)
+        <br />
+    </div>
+</div>
+
+

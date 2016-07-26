@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BeesApp.Models.OnlineOrderModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDelivered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityPurchased)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OnlineOrderModelId)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telephone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDelivered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantityPurchased)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OnlineOrderModelId)
+        </td>
+        @if(User.IsInRole("SuperAdmin")){
+        
+        <td style="font-family:Verdana">
+            @Html.DisplayFor(modelItem => item.ConfirmationNumber)
+        </td>
+        }
+       
+    </tr>
+}
+
+</table>

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<BeesApp.Models.DeliveriesModel>
+
+@{
+    ViewBag.Title = "GetManagerCode";
+}
+
+<h2>GetManagerCode</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.DriversName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.OrdersId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovalCod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Approved)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAssigned)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.DriversName)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.OrdersId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovalCod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Approved)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateAssigned)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DeliveriesModelId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DeliveriesModelId }) |
+            @Html.ActionLink("Delete", "DeleteOrder",new { id=item.DeliveriesModelId })
+        </td>
+    </tr>
+}
+
+</table>

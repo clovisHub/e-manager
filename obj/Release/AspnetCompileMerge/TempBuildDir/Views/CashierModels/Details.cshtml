@@ -1,0 +1,82 @@
+﻿@model BeesApp.Models.CashierModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CashierModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerPound)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerPound)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantitySold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantitySold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountToPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountToPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogInTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogInTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogOutTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogOutTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InStock)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CashierModelId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<IdentitySample.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+   Click @Html.ActionLink("New Employee", "Create") to create a new employee.
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit Employee Information", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Check Role", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Fire Employee", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
